@@ -1,4 +1,5 @@
 import sys
+from src.logger import logging
 
 def error_message(error:Exception,error_detail:sys):
     """Generate detailed error messages with file name, line number, and error details."""
@@ -25,3 +26,10 @@ class CustomException(Exception):
     def __str__(self):
         return self.error_message
     
+if __name__ == "__main__":
+    try:
+        a=1/0
+    except Exception as e:
+        logging.error("Divide Zero Error")
+        raise CustomException(e,sys)
+        
