@@ -6,6 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
+#Ignore Notebook folder
+notebook/dataset/
+
 # Distribution / packaging
 .Python
 build/
