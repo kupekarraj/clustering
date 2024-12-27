@@ -5,4 +5,4 @@ matplotlib
 ipykernel
 scikit-learn
 plotly
-# -e .
+-e .

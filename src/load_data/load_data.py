@@ -15,13 +15,14 @@ class DataLoader:
             df= pd.read_csv(self.filepath)
             # Dropping rows having null values and storing the output the same dataset
             df.dropna(subset=["trading_name"], inplace=True)
-            return df
             logging.info("Data Loading Complete")
+            return df
 
         except Exception as e:
             logging.error("Error in Data Loading")
             raise CustomException(e,sys)
         
 if __name__ == '__main__':
-    file_path= input().strip()
+    file_path= input("Enter the file path here: ").strip()
     data_loader= DataLoader(file_path)
+    data= data_loader.load_data()
