@@ -1,8 +1,9 @@
 # Import required libraries
 import pandas as pd
 import sys
-from src.logger import logging
 from src.exception import CustomException
+from src.logger import logging
+
 
 class DataLoader:
     def __init__(self,filepath):
@@ -24,5 +25,3 @@ class DataLoader:
 if __name__ == '__main__':
     file_path= input().strip()
     data_loader= DataLoader(file_path)
-
-
