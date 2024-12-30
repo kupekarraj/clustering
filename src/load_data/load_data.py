@@ -6,7 +6,7 @@ from src.logger import logging
 
 
 class DataLoader:
-    def __init__(self,filepath):
+    def __init__(self,filepath='notebook/dataset/Dealer_Export.csv'):
         self.filepath= filepath
 
     def load_data(self):
