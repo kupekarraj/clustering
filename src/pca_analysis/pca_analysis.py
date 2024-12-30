@@ -40,7 +40,7 @@ class PCA_Analysis:
                             'PCA1': False,        # Hide PCA1 value
                             'PCA2': False         # Hide PCA2 value
                         },
-                labels={'Clusters'= 'Cluster ID', 'DID'= 'Dealer ID', 'Trading_Name': 'Dealer Name'}
+                labels= {'Clusters': 'Cluster ID', 'DID': 'Dealer ID', 'Trading_Name': 'Dealer Name'},
                 title='Dealer Segmentation'
             )
 
