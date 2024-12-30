@@ -1,9 +1,12 @@
 import pandas as pd
 import sys
+import warnings
 from src.logger import logging
 from src.exception import CustomException
 from src.load_data.load_data import DataLoader
-from sklearn.preprocessing import LabelEncoder, StandardScaler
+
+# Suppress all warnings
+warnings.filterwarnings("ignore")  
 
 class DataPreprocessing:
     def __init__(self,data_frame):

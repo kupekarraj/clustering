@@ -3,7 +3,7 @@ import sys
 from src.logger import logging
 from src.exception import CustomException
 from src.load_data.load_data import DataLoader
-from src.pre_processing.preprocessing_data import DataPreprocessing
+from src.preprocessing_data.preprocessing_data import DataPreprocessing
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 
 class DataTransform:
@@ -30,7 +30,7 @@ class DataTransform:
             self.processed_data[self.processed_data.columns]=scaler.fit_transform(self.processed_data)
 
             logging.info("Data Transformation Complete")
-            return self.processed_data
+            return self.processed_data,og_data
         
         except Exception as e:
             logging.error("Error in Data Transformation")
@@ -46,4 +46,4 @@ if __name__=='__main__':
     data = data_preprocess.preprocess_data()
 
     data_transformation= DataTransform(data)
-    data_transformed= data_transformation.transform_data()
+    data_transformed, original_data = data_transformation.transform_data()

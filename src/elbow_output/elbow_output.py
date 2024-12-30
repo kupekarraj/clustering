@@ -4,7 +4,7 @@ from src.exception import CustomException
 from sklearn.cluster import KMeans
 import plotly.express as px
 from src.load_data.load_data import DataLoader
-from src.pre_processing.preprocessing_data import DataPreprocessing
+from src.preprocessing_data.preprocessing_data import DataPreprocessing
 from src.transform_data.transform_data import DataTransform
 
 class ElbowMethodViz:
@@ -40,7 +40,7 @@ if __name__=='__main__':
     data = data_preprocess.preprocess_data()
 
     data_transformation= DataTransform(data)
-    data_transformed= data_transformation.transform_data()
+    data_transformed, original_data = data_transformation.transform_data()
 
     data_clusters=ElbowMethodViz(data_transformed)
     data_clusters.show_elbow_output()
