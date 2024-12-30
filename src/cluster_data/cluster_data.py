@@ -22,7 +22,7 @@ class KMeansClustering:
             clusters = kmeans.fit_predict(self.transformed_data)
             # Add cluster labels to the original data
             self.original_data['cluster'] = clusters
-            print(self.original_data)
+            logging.info("Data Clustering Complete")
             return self.original_data
 
         except Exception as e:
