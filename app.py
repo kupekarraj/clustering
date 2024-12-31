@@ -28,23 +28,23 @@ def main():
         # Writing the Imported dataset for reference
         st.write("Dealer's Data for Analysis", data_frame)
 
+        # Preprocessing of loaded data
+        data_preprocess= DataPreprocessing(data_frame)
+        data_preprocessed = data_preprocess.preprocess_data()
+
         # Feature selection for clustering
         selected_features = st.multiselect(
             'Select features for Dealer Segmentation:',
-            options= data_frame.columns,
-            default=data_frame.columns
+            options= data_preprocessed.columns,
+            default=data_preprocessed.columns
         )
 
-        selected_features_df= data_frame[selected_features]
-
-        # Preprocessing of loaded data
-        data_preprocess= DataPreprocessing(selected_features_df)
-        data_preprocessed = data_preprocess.preprocess_data()
+        selected_features_df= data_preprocessed[selected_features]
 
         # Data filtering section
         st.sidebar.subheader('Filter Options')
 
-        st_data_filter= STDataFilter(data_preprocessed)
+        st_data_filter= STDataFilter(selected_features_df)
         filtered_data= st_data_filter.st_filter_options()
 
         st.write(f'There are a total of {len(filtered_data)} records available for cluster analysis',filtered_data)
