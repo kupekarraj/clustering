@@ -43,19 +43,19 @@ class DataPreprocessing:
         try:
             # Correcting the data types for certain columns
             self.data_frame['did'] = self.data_frame['did'].astype('object')
-            self.data_frame['reg_code']=self.data_frame['reg_code'].astype('object')
-            self.data_frame['created_date']=pd.to_datetime(self.data_frame['created_date'])
+            #self.data_frame['reg_code']=self.data_frame['reg_code'].astype('object')
+            # self.data_frame['created_date']=pd.to_datetime(self.data_frame['created_date'])
 
             # Adding two new columns for Ad Created Month-Year & Package Redefining
-            self.data_frame['ad_created_in']=self.data_frame['created_date'].dt.strftime('%b, %Y')
-            self.data_frame['package_redefined'] = self.data_frame['package'].apply(self.package_restructure)
+            # self.data_frame['ad_created_in']=self.data_frame['created_date'].dt.strftime('%b, %Y')
+            #self.data_frame['package_redefined'] = self.data_frame['package'].apply(self.package_restructure)
 
             # Dropping unwanted columns from the data frame
-            self.data_frame.drop(columns=['package','created_date'], inplace=True)
+            #self.data_frame.drop(columns=['package'], inplace=True)
 
             # Correcting the data types for certain columns\n",
-            self.data_frame['did'] = self.data_frame['did'].astype('object')
-            self.data_frame['reg_code']=self.data_frame['reg_code'].astype('object')
+            #self.data_frame['did'] = self.data_frame['did'].astype('object')
+            #self.data_frame['reg_code']=self.data_frame['reg_code'].astype('object')
 
             logging.info("Data Preprocessing Completed")
             return self.data_frame
@@ -71,5 +71,3 @@ if __name__ == '__main__':
 
     data_preprocess= DataPreprocessing(data_frame)
     data = data_preprocess.preprocess_data()
-
-    

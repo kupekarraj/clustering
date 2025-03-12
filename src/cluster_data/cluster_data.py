@@ -18,7 +18,7 @@ class KMeansClustering:
         try:
             # Perform KMeans clustering with optimal clusters
             optimal_clusters = self.cluster_size  # Set based on the elbow graph
-            kmeans = KMeans(n_clusters=optimal_clusters, random_state=42)
+            kmeans = KMeans(n_clusters=optimal_clusters, init='random', random_state=42)
             clusters = kmeans.fit_predict(self.transformed_data)
             # Add cluster labels to the original data
             self.original_data['cluster'] = clusters

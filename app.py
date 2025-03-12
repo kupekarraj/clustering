@@ -36,7 +36,7 @@ def main():
         selected_features = st.multiselect(
             'Select features for Dealer Segmentation:',
             options= data_preprocessed.columns,
-            default=data_preprocessed.columns
+            default=list(data_preprocessed.columns)
         )
 
         selected_features_df= data_preprocessed[selected_features]
@@ -58,6 +58,9 @@ def main():
                 # Data Transformation
                 data_transformation= DataTransform(filtered_data)
                 data_transformed, original_data = data_transformation.transform_data()
+
+                # Drop specific columns by name
+                data_transformed.drop(columns=['did', 'trading_name'], inplace=True)
 
                 data_clusters=ElbowMethodViz(data_transformed)
                 elbow_output=data_clusters.show_elbow_output()

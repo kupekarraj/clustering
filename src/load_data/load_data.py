@@ -14,7 +14,9 @@ class DataLoader:
         try:
             df= pd.read_csv(self.filepath)
             # Dropping rows having null values and storing the output the same dataset
-            df.dropna(subset=["trading_name"], inplace=True)
+            #df.dropna(subset=["trading_name"], inplace=True)
+            df.dropna(inplace=True)
+
             logging.info("Data Loading Complete")
             return df
 
