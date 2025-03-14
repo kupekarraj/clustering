@@ -2,14 +2,18 @@ import logging
 import os
 from datetime import datetime
 
+# Get current date components
+now = datetime.now()
+year = now.strftime("%Y")
+month = now.strftime("%m_%B")  # Example: 03_March
+day = now.strftime("%d")  # Example: 11
+
+# Define the logs directory structure: logs/year/month/day/
+logs_dir = os.path.join(os.getcwd(), "logs", year, month, day)
+os.makedirs(logs_dir, exist_ok=True)  # Ensure all directories exist
+
 # Generate log file name with timestamp
-LOG_FILE = f"{datetime.now().strftime('%d_%b_%Y-%H.%M.%S')}.log"
-
-# Define logs directory
-logs_dir = os.path.join(os.getcwd(), "logs")  # Only the directory path
-os.makedirs(logs_dir, exist_ok=True)  # Create logs directory if it doesn't exist
-
-# Define the full path of the log file
+LOG_FILE = f"{now.strftime('%d_%b_%Y-%H.%M.%S')}.log"
 LOG_FILE_PATH = os.path.join(logs_dir, LOG_FILE)
 
 # Configure logging
